@@ -195,6 +195,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 182731453}
   m_CullTransparentMesh: 1
+--- !u!114 &186805035 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4467404105046057932, guid: ed20832c1d570ca4c900587f6f67bd83,
+    type: 3}
+  m_PrefabInstance: {fileID: 355409577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6311c2ccbcc5a5143af1308c2c10c0b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &249301428 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6841851043301493943, guid: ed20832c1d570ca4c900587f6f67bd83,
@@ -219,6 +231,11 @@ PrefabInstance:
       propertyPath: exitPosition
       value: 141
       objectReference: {fileID: 0}
+    - target: {fileID: 4467404105046057932, guid: ed20832c1d570ca4c900587f6f67bd83,
+        type: 3}
+      propertyPath: mainCanvasRT
+      value: 
+      objectReference: {fileID: 1809335604}
     - target: {fileID: 4467404105046057932, guid: ed20832c1d570ca4c900587f6f67bd83,
         type: 3}
       propertyPath: startPositionY
@@ -630,6 +647,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &907519682 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4467404105046057932, guid: ed20832c1d570ca4c900587f6f67bd83,
+    type: 3}
+  m_PrefabInstance: {fileID: 6841851043480012035}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6311c2ccbcc5a5143af1308c2c10c0b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &986608936
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,13 +853,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256228ff168a29d438d70a7a94fd990f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reels:
+  reelsRT:
   - {fileID: 1474355747}
   - {fileID: 298679281}
   - {fileID: 1025378566}
+  reels:
+  - {fileID: 907519682}
+  - {fileID: 186805035}
+  - {fileID: 1470650665}
   delayStep: 0.5
   startEase: 5
   stopEase: 6
+  boostDistance: -800
+  linearDistance: -3200
+  stoppingDistance: -4000
+  boostDuration: 0.8
+  linearDuration: 1.5
+  stoppingDuration: 0.8
+  playButton: {fileID: 375241984}
 --- !u!224 &1185045425 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6841851043301493943, guid: ed20832c1d570ca4c900587f6f67bd83,
@@ -903,6 +943,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1470650665 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4467404105046057932, guid: ed20832c1d570ca4c900587f6f67bd83,
+    type: 3}
+  m_PrefabInstance: {fileID: 1917409095}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6311c2ccbcc5a5143af1308c2c10c0b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1474355747 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2698374419577192239, guid: ed20832c1d570ca4c900587f6f67bd83,
@@ -1074,6 +1126,11 @@ PrefabInstance:
       propertyPath: exitPosition
       value: 141
       objectReference: {fileID: 0}
+    - target: {fileID: 4467404105046057932, guid: ed20832c1d570ca4c900587f6f67bd83,
+        type: 3}
+      propertyPath: mainCanvasRT
+      value: 
+      objectReference: {fileID: 1809335604}
     - target: {fileID: 4467404105046057932, guid: ed20832c1d570ca4c900587f6f67bd83,
         type: 3}
       propertyPath: startPositionY
@@ -1407,6 +1464,11 @@ PrefabInstance:
       propertyPath: exitPosition
       value: 141
       objectReference: {fileID: 0}
+    - target: {fileID: 4467404105046057932, guid: ed20832c1d570ca4c900587f6f67bd83,
+        type: 3}
+      propertyPath: mainCanvasRT
+      value: 
+      objectReference: {fileID: 1809335604}
     - target: {fileID: 4467404105046057932, guid: ed20832c1d570ca4c900587f6f67bd83,
         type: 3}
       propertyPath: startPositionY
