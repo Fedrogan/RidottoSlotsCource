@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2698374419577192239}
   - component: {fileID: 3913482654848141549}
   - component: {fileID: 4992856051319140577}
+  - component: {fileID: 4467404105046057932}
   m_Layer: 5
   m_Name: Symbols
   m_TagString: Untagged
@@ -64,7 +65,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -79,6 +79,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4467404105046057932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3453842574117945553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6311c2ccbcc5a5143af1308c2c10c0b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  symbolsOnReel:
+  - {fileID: 6841851043356935071}
+  - {fileID: 6841851043435191410}
+  - {fileID: 6841851043426378163}
+  - {fileID: 6841851043906121446}
+  exitPosition: 141
+  symbolHeigth: 200
+  sprites:
+  - {fileID: 8720604468809159126, guid: 7e4ec201b71701f49a6e484ea2ca47e1, type: 3}
+  - {fileID: -3739395637988037281, guid: 7e4ec201b71701f49a6e484ea2ca47e1, type: 3}
+  - {fileID: -469525390435789673, guid: 7e4ec201b71701f49a6e484ea2ca47e1, type: 3}
+  - {fileID: -5196480314518052078, guid: 7e4ec201b71701f49a6e484ea2ca47e1, type: 3}
+  - {fileID: -612294750349367285, guid: 7e4ec201b71701f49a6e484ea2ca47e1, type: 3}
+  - {fileID: 4906567379933833492, guid: 7e4ec201b71701f49a6e484ea2ca47e1, type: 3}
+  - {fileID: 8796499958254778168, guid: 7e4ec201b71701f49a6e484ea2ca47e1, type: 3}
+  - {fileID: 4588468031203458904, guid: 7e4ec201b71701f49a6e484ea2ca47e1, type: 3}
+  - {fileID: 4830219810074551288, guid: 7e4ec201b71701f49a6e484ea2ca47e1, type: 3}
+  - {fileID: -5148847302637816175, guid: 7e4ec201b71701f49a6e484ea2ca47e1, type: 3}
+  mainCanvasRT: {fileID: 0}
 --- !u!1 &6841851043301493936
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +122,6 @@ GameObject:
   - component: {fileID: 6841851043301493940}
   - component: {fileID: 6841851043301493941}
   - component: {fileID: 6841851043301493942}
-  - component: {fileID: -6018063982872933903}
   m_Layer: 5
   m_Name: Reel
   m_TagString: Untagged
@@ -162,7 +192,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!114 &6841851043301493942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,36 +209,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &-6018063982872933903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6841851043301493936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Content: {fileID: 0}
-  m_Horizontal: 1
-  m_Vertical: 1
-  m_MovementType: 1
-  m_Elasticity: 0.1
-  m_Inertia: 1
-  m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
-  m_Viewport: {fileID: 6841851044069003671}
-  m_HorizontalScrollbar: {fileID: 0}
-  m_VerticalScrollbar: {fileID: 0}
-  m_HorizontalScrollbarVisibility: 0
-  m_VerticalScrollbarVisibility: 0
-  m_HorizontalScrollbarSpacing: 0
-  m_VerticalScrollbarSpacing: 0
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &6841851043356935064
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,12 +269,12 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -612294750349367285, guid: 7e4ec201b71701f49a6e484ea2ca47e1, type: 3}
+  m_Sprite: {fileID: -612294750349367285, guid: 7e4ec201b71701f49a6e484ea2ca47e1,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -345,12 +344,12 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4906567379933833492, guid: 7e4ec201b71701f49a6e484ea2ca47e1, type: 3}
+  m_Sprite: {fileID: 4906567379933833492, guid: 7e4ec201b71701f49a6e484ea2ca47e1,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -420,12 +419,12 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5148847302637816175, guid: 7e4ec201b71701f49a6e484ea2ca47e1, type: 3}
+  m_Sprite: {fileID: -5148847302637816175, guid: 7e4ec201b71701f49a6e484ea2ca47e1,
+    type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -495,12 +494,12 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8720604468809159126, guid: 7e4ec201b71701f49a6e484ea2ca47e1, type: 3}
+  m_Sprite: {fileID: 8720604468809159126, guid: 7e4ec201b71701f49a6e484ea2ca47e1,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -572,7 +571,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
