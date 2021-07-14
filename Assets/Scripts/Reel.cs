@@ -45,8 +45,7 @@ public class Reel : MonoBehaviour
     {
         if (ReelState == ReelState.Stopping || ReelState == ReelState.ForceStopping)
         {
-            symbol.GetComponent<Image>().sprite = GetFinalScreenSymbol();
-            currentSymbolIndex++;
+            symbol.GetComponent<Image>().sprite = GetFinalScreenSymbol();            
         }
         else
         {
@@ -90,6 +89,7 @@ public class Reel : MonoBehaviour
             finalScreenSymbolIndex = 0;
         }
         var newSymbol = gameConfig.Symbols[currentFinalScreen[finalScreenSymbolIndex]];
+        currentSymbolIndex++;
         return newSymbol.SymbolImage;
     }
 
