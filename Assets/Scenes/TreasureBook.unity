@@ -1085,11 +1085,11 @@ MonoBehaviour:
   startEase: 5
   stopEase: 6
   boostDistance: -800
-  linearDistance: -3200
-  stoppingDistance: -4000
-  boostDuration: 0.8
+  linearDistance: -6400
+  stoppingDistance: 0
+  boostDuration: 0.38
   linearDuration: 1.5
-  stoppingDuration: 0.8
+  stoppingDuration: 0.35
   playButton: {fileID: 375241984}
   playButtonRT: {fileID: 375241983}
   stopButton: {fileID: 511985987}

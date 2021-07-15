@@ -29,3 +29,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b7be0e3b428474b4f84cc107fb33a344, type: 2}
   - {fileID: 11400000, guid: 8c101885006180b4aaac27253f9adc74, type: 2}
   - {fileID: 11400000, guid: 056f104d712d5774da92180240b6f75f, type: 2}
+  visibleSymbolsOnReel: 3
