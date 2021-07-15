@@ -108,7 +108,6 @@ public class ReelsScroll : MonoBehaviour
         var integerPart = Mathf.Floor(symbolsScrolled);
         var fractionalPart = symbolsScrolled - integerPart;
         var extraDistance = (1 - fractionalPart) * symbolHeight;
-        print(extraDistance);
         return extraDistance;
     }
 
