@@ -8,68 +8,75 @@ public class ReelsScroll : MonoBehaviour
 {
     [SerializeField] private RectTransform[] reelsRT;
     [SerializeField] private Reel[] reels;
-    [SerializeField] private float delayStep;
-    [SerializeField] private Ease startEase;
-    [SerializeField] private Ease stopEase;
-    [SerializeField] private float boostDistance, linearDistance, stoppingDistance;
-    [SerializeField] private float boostDuration, linearDuration, stoppingDuration;
     [SerializeField] private Button playButton;
 
+    // поле для задания задержки между началом вращений рилов
+    [SerializeField] private float delayStep;
+    // кривая начала вращения   
+    [SerializeField] private Ease startEase;
+    // кривая остановки
+    [SerializeField] private Ease stopEase;
+    // позиции, в которые должны двигаться рилы при разгоне, вращении и остановке
+    [SerializeField] private float boostDistance, linearDistance, stoppingDistance; 
+    // время, за которое перемещаются рилы в эти позиции
+    [SerializeField] private float boostDuration, linearDuration, stoppingDuration;
+    // словарь для связи рилов с их RectTransform, нужный для того, чтобы не использовать "дорогой" метод GetComponent()
     private Dictionary<RectTransform, Reel> reelsDictionary;
+    // стартовая позиция рилов для возврата якорей перед началом нового вращения
     private float reelStartPositionY;
-    private float thirdReelPosX;
 
     private void Start()
     {
         reelsDictionary = new Dictionary<RectTransform, Reel>();
         for (int i = 0; i < reelsRT.Length; i++)
         {
-            reelsDictionary.Add(reelsRT[i], reels[i]);
+            reelsDictionary.Add(reelsRT[i], reels[i]); // добавление в словарь рилов Reel по ключу RectTransform 
         }
-        thirdReelPosX = reelsRT[2].position.x;
-        reelStartPositionY = reelsRT[0].localPosition.y;
+        reelStartPositionY = reelsRT[0].localPosition.y; // получем начальную позицию любого из рилов
     }
 
+    /** Метод ScrollStart срабатывает при нажатии кнопки PLAY и запускает вращения рилов */ 
     public void ScrollStart() 
     {
-        playButton.interactable = false;
+        playButton.interactable = false; // отключение интерактивности(кликабельности) кнопки PLAY
         for (int i = 0; i < reelsRT.Length; i++)
         {
             var reelRT = reelsRT[i];
-            reelRT.DOAnchorPosY(boostDistance, boostDuration)
-                .SetDelay(i * delayStep)
-                .SetEase(startEase)
-                .OnComplete(() => ScrollLinear(reelRT));
+            reelRT.DOAnchorPosY(boostDistance, boostDuration) // перемещение якоря рила в позицию boostDistance за время boostDuration
+                .SetDelay(i * delayStep) // установка задержки между вращением рилов   
+                .SetEase(startEase) // установка кривой начала вращения
+                .OnComplete(() => ScrollLinear(reelRT)); // при завершении твина выполняется метод ScrollLinear и в него передается текущий рил
         }
     }
 
     private void ScrollLinear(RectTransform reelRT)
     {
-        reelRT.DOAnchorPosY(linearDistance, linearDuration)
+        reelRT.DOAnchorPosY(linearDistance, linearDuration) // перемещение якоря рила в позицию linearDistance за время linearDuration
             .SetEase(Ease.Linear)
-            .OnComplete(() => ScrollStop(reelRT));
+            .OnComplete(() => ScrollStop(reelRT)); // при завершении твина выполняется метод ScrollLinear и в него передается текущий рил
     }
 
     private void ScrollStop(RectTransform reelRT)
     {
-        reelRT.DOAnchorPosY(stoppingDistance, stoppingDuration)
-            .SetEase(stopEase)
-            .OnComplete(() => 
+        reelRT.DOAnchorPosY(stoppingDistance, stoppingDuration) // перемещение якоря рила в позицию stoppingDistance за время stoppingDuration
+            .SetEase(stopEase) // установка кривой начала вращения
+            .OnComplete(() => // при завершении твина:
                 {
-                    PrepareReel(reelRT);
-                    if (reelRT.position.x == thirdReelPosX)
+                    PrepareReel(reelRT); // подготавливаем рилы к следующему вращению
+                    if (reelsDictionary[reelRT].ReelID == 3)
                     {
-                        playButton.interactable = true;
+                        playButton.interactable = true; // когда остановлен третий рил, кнопка PLAY становится интерактивной
                     }
                 });
     }
 
+    /** Метод PerpareReel используется для сброса якорей рилов и их символов
+     *  на начальную позицию перед началом нового вращения. */
     private void PrepareReel(RectTransform reelRT)
     {
-        var currentReelPosY = reelRT.localPosition.y;
-        print(currentReelPosY);
-        reelRT.localPosition = new Vector3(reelRT.localPosition.x, reelStartPositionY);
-        reelsDictionary[reelRT].ResetSymbolsPosition(currentReelPosY);
-
+        var prevReelPosY = reelRT.localPosition.y; // получаем текущую позицию рила, необходимую для рассчета пройденной дистанции
+        var traveledReelDistance = -(reelStartPositionY + prevReelPosY); // рассчитываем пройденную дистанцию и меняем ей знак, т.к. координаты отрицательные
+        reelRT.localPosition = new Vector3(reelRT.localPosition.x, reelStartPositionY); // сброс якорей рила 
+        reelsDictionary[reelRT].ResetSymbolsPosition(traveledReelDistance); // см. класс (скрипт) Reel
     }
 }
