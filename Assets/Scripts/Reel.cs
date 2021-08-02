@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Reel : MonoBehaviour
 {
+    [SerializeField] GameConfig gameConfig;
     [SerializeField] private RectTransform[] symbolsOnReel;
     // массив иконок (10, J, A и т.д.)
     [SerializeField] private Sprite[] sprites;
@@ -19,6 +20,15 @@ public class Reel : MonoBehaviour
     private float symbolHeigth;
     // масштаб холста, который нужно учитывать для корректной работы в разных разрешениях экрана
     private float mainCanvasScale;
+    private int currentSymbolIndex = 0;
+    private int currentFinalSet = 0;
+
+    [SerializeField] int reelId;
+    private ReelState reelState = ReelState.Stop;
+
+    public int ReelId => reelId;
+
+    internal ReelState ReelState { get => reelState; set => reelState = value; }
 
     public int ReelID => reelID; // дефолтный геттер для поля reelID
 
@@ -48,8 +58,54 @@ public class Reel : MonoBehaviour
 
     private void ChangeSymbolSprite(RectTransform symbol)
     {
-        var random = Random.Range(0, sprites.Length); // получаем рандомное число в диапазоне от 0 (включительно) до 10 (не включительно) 
-        symbol.GetComponent<Image>().sprite = sprites[random]; // меняем иконку символа на рандомную из массива иконок
+        if (ReelState == ReelState.Stopping || ReelState == ReelState.ForceStopping)
+        {
+            symbol.GetComponent<Image>().sprite = GetFinalScreenSymbol();            
+        }
+        else
+        {
+            symbol.GetComponent<Image>().sprite = GetRandomSymbol();
+        }
+    }
+
+    public void ResetSymbolsPosition(float reelCurrentPositionY)
+    {
+        currentSymbolIndex = 0;
+        if (currentFinalSet < gameConfig.FinalScreens.Length - 1)
+        {
+            currentFinalSet++;
+        }
+        else
+        {
+            currentFinalSet = 0;
+        }
+
+        foreach(var symbol in symbolsOnReel)
+        {
+            var symbolPos = symbol.localPosition;
+            var newPos = Mathf.Round(symbolPos.y + reelCurrentPositionY); 
+            symbol.localPosition = new Vector3(symbolPos.x, newPos);
+        }
+    }
+
+    private Sprite GetRandomSymbol()
+    {
+        var random = Random.Range(0, gameConfig.Symbols.Length);
+        var sprite = gameConfig.Symbols[random].SymbolImage;
+        return sprite;
+    }
+
+    private Sprite GetFinalScreenSymbol() 
+    {
+        var finalScreenSymbolIndex = currentSymbolIndex + (reelId - 1) * gameConfig.VisibleSymbolsOnReel;
+        var currentFinalScreen = gameConfig.FinalScreens[currentFinalSet].FinalScreen;
+        if (finalScreenSymbolIndex >= currentFinalScreen.Length)
+        {
+            finalScreenSymbolIndex = 0;
+        }
+        var newSymbol = gameConfig.Symbols[currentFinalScreen[finalScreenSymbolIndex]];
+        currentSymbolIndex++;
+        return newSymbol.SymbolImage;
     }
 
     private void MoveSymbolUp(RectTransform symbolRT)
