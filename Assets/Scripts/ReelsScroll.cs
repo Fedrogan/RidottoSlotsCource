@@ -59,14 +59,13 @@ public class ReelsScroll : MonoBehaviour
                 .SetDelay(i * delayStep) // установка задержки между вращением рилов   
                 .SetEase(startEase) // установка кривой начала вращения
                 .OnComplete(() => 
-                {
-                    ScrollLinear(reelRT)); // при завершении твина выполняется метод ScrollLinear и в него передается текущий рил
-                    if (reelsDictionary[reelRT].ReelId == reelsRT.Length)
                     {
-                        stopButton.interactable = true;
-                    }
-                });
-
+                        ScrollLinear(reelRT);
+                        if (reelsDictionary[reelRT].ReelId == reelsRT.Length)
+                        {
+                            stopButton.interactable = true;
+                        }
+                    });
         }
     }
 
@@ -98,7 +97,9 @@ public class ReelsScroll : MonoBehaviour
 
                         playButtonRT.localScale = Vector3.one;
                         playButton.interactable = true;
+                    }
                 });
+
     }
 
     private void CorrectReelPos (RectTransform reelRT)
@@ -146,3 +147,4 @@ public class ReelsScroll : MonoBehaviour
         reelsDictionary[reelRT].ResetSymbolsPosition(traveledReelDistance); // см. класс (скрипт) Reel
     }
 }
+

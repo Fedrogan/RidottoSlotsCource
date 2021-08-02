@@ -66,27 +66,7 @@ public class Reel : MonoBehaviour
         {
             symbol.GetComponent<Image>().sprite = GetRandomSymbol();
         }
-    }
-
-    public void ResetSymbolsPosition(float reelCurrentPositionY)
-    {
-        currentSymbolIndex = 0;
-        if (currentFinalSet < gameConfig.FinalScreens.Length - 1)
-        {
-            currentFinalSet++;
-        }
-        else
-        {
-            currentFinalSet = 0;
-        }
-
-        foreach(var symbol in symbolsOnReel)
-        {
-            var symbolPos = symbol.localPosition;
-            var newPos = Mathf.Round(symbolPos.y + reelCurrentPositionY); 
-            symbol.localPosition = new Vector3(symbolPos.x, newPos);
-        }
-    }
+    }    
 
     private Sprite GetRandomSymbol()
     {
@@ -122,12 +102,21 @@ public class Reel : MonoBehaviour
      *  Принимает пройденную рилом дистанцию и отнимает ее от текущей позиции символов*/
     public void ResetSymbolsPosition(float reelTraveledDistance)
     {
-        foreach(var symbol in symbolsOnReel)
+        currentSymbolIndex = 0;
+        if (currentFinalSet < gameConfig.FinalScreens.Length - 1)
+        {
+            currentFinalSet++;
+        }
+        else
+        {
+            currentFinalSet = 0;
+        }
+        foreach (var symbol in symbolsOnReel)
         {
             var symbolPos = symbol.localPosition; // получаем текущую позицию символа
             var correction = Mathf.Round(symbolPos.y - reelTraveledDistance); 
             var correctedfPos = new Vector3(symbolPos.x, correction);
             symbol.localPosition = correctedfPos;
         }
-    }    
+    }
 }
