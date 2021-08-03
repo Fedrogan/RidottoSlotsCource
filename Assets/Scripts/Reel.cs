@@ -48,8 +48,8 @@ public class Reel : MonoBehaviour
         {
             if (symbol.position.y <= exitPosition * mainCanvasScale) // при выходе символа за позицию-триггер:
             {
-                MoveSymbolUp(symbol); // он перемещается вверх
-                ChangeSymbolSprite(symbol); // на нем меняется спрайт (иконка)
+                MoveSymbolUp(symbol);                               // он перемещается вверх
+                ChangeSymbolSprite(symbol);                         // на нем меняется спрайт (иконка)
             }
         }
     }
@@ -72,8 +72,8 @@ public class Reel : MonoBehaviour
     /// <returns> Sprite randomSprite</returns>
     private Sprite GetRandomSymbol()
     {        
-        var random = Random.Range(0, gameConfig.Symbols.Length); // получаем рандомное число в диапазоне от 0(включительно) до 10(не включительно)
-        var sprite = gameConfig.Symbols[random].SymbolImage; // меняем иконку символа на рандомную из конфига
+        var random = Random.Range(0, gameConfig.Symbols.Length);    // получаем рандомное число в диапазоне от 0(включительно) до 10(не включительно)
+        var sprite = gameConfig.Symbols[random].SymbolImage;        // меняем иконку символа на рандомную из конфига
         return sprite;
     }
 
@@ -107,8 +107,9 @@ public class Reel : MonoBehaviour
         symbolRT.position = newPos;
     }
 
-    /** Метод ResetSymbolsPosition необходим, чтобы оставить символы в рамках маски при сбросе позиции рилов.
-     *  Принимает пройденную рилом дистанцию и отнимает ее от текущей позиции символов*/
+    /// <summary>
+    /// Метод ResetSymbolsPosition необходим, чтобы оставить символы в рамках маски при сбросе позиции рилов.
+    /// </summary>    
     public void ResetSymbolsPosition(float reelTraveledDistance)
     {
         currentSymbolIndex = 0;
